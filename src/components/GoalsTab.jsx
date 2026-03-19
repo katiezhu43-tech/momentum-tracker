@@ -30,20 +30,20 @@ function Calendar({ startDate, endDate, calendarData, onDayClick }) {
   const colorMap = { purple:'#C084FC', blue:'#93C5FD', green:'#86EFAC', yellow:'#FDE68A' }
 
   return (
-    <div className="border border-gray-100 rounded-2xl p-6">
+    <div className="border border-[#E8E0D0] rounded-2xl p-6">
       <div className="flex items-center justify-between mb-6">
         <button onClick={() => canPrev && setViewMonth(new Date(year, month-1, 1))}
-          className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${canPrev ? 'text-gray-400 hover:bg-gray-100' : 'text-gray-200'}`}>
+          className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${canPrev ? 'text-[#8C7B6B] hover:bg-gray-100' : 'text-[#C8BDB0]'}`}>
           <ChevronLeft size={18} />
         </button>
         <span className="text-base text-gray-500">{year}年{month+1}月</span>
         <button onClick={() => canNext && setViewMonth(new Date(year, month+1, 1))}
-          className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${canNext ? 'text-gray-400 hover:bg-gray-100' : 'text-gray-200'}`}>
+          className={`w-9 h-9 flex items-center justify-center rounded-full transition-colors ${canNext ? 'text-[#8C7B6B] hover:bg-gray-100' : 'text-[#C8BDB0]'}`}>
           <ChevronRight size={18} />
         </button>
       </div>
       <div className="grid grid-cols-7 mb-3">
-        {WEEK_DAYS.map(w => <div key={w} className="text-center text-xs text-gray-300 py-1">{w}</div>)}
+        {WEEK_DAYS.map(w => <div key={w} className="text-center text-xs text-[#B5A898] py-1">{w}</div>)}
       </div>
       <div className="grid grid-cols-7 gap-y-2">
         {cells.map((day, i) => {
@@ -60,8 +60,8 @@ function Calendar({ startDate, endDate, calendarData, onDayClick }) {
             <button key={ds} onClick={() => !beforeStart && onDayClick(ds)} disabled={!!beforeStart}
               className={`flex flex-col items-center justify-center rounded-xl py-2 text-sm transition-colors
                 ${isToday ? 'bg-gray-900 text-white' : ''}
-                ${!isToday && !beforeStart ? 'text-gray-600 hover:bg-gray-50' : ''}
-                ${beforeStart ? 'text-gray-200 cursor-default' : ''}
+                ${!isToday && !beforeStart ? 'text-[#4A4035] hover:bg-gray-50' : ''}
+                ${beforeStart ? 'text-[#C8BDB0] cursor-default' : ''}
               `}>
               <span>{day.getDate()}</span>
               {dots.length > 0 && (
@@ -96,11 +96,11 @@ export default function GoalsTab({ goals, startDate, endDate, calendarData, onGo
 
       {/* 目标 - 横排三列 */}
       <section>
-        <p className="text-[11px] text-gray-300 uppercase tracking-widest mb-4">目标</p>
+        <p className="text-[11px] text-[#B5A898] uppercase tracking-widest mb-4">目标</p>
         <div className="grid grid-cols-3 gap-4">
           {[0,1,2].map(i => (
             <input key={i}
-              className="w-full bg-white border border-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 placeholder-gray-200 outline-none focus:border-gray-300 transition-colors"
+              className="w-full bg-[#FFFDF7] border border-[#E8E0D0] rounded-xl px-4 py-3 text-sm text-gray-700 placeholder-gray-200 outline-none focus:border-gray-300 transition-colors"
               placeholder={`目标 ${i+1}`} maxLength={50}
               defaultValue={localGoals[i] || ''}
               onBlur={e => handleGoalBlur(i, e.target.value)}
@@ -111,16 +111,16 @@ export default function GoalsTab({ goals, startDate, endDate, calendarData, onGo
 
       {/* 周期 */}
       <section>
-        <p className="text-[11px] text-gray-300 uppercase tracking-widest mb-4">周期</p>
+        <p className="text-[11px] text-[#B5A898] uppercase tracking-widest mb-4">周期</p>
         <div className="flex gap-4">
           {[
             { label: '开始', value: startDate, onChange: handleStartChange },
             { label: '结束', value: endDate,   onChange: onEndChange },
           ].map(f => (
             <div key={f.label} className="flex-1 flex flex-col gap-1">
-              <label className="text-[11px] text-gray-300">{f.label}</label>
+              <label className="text-[11px] text-[#B5A898]">{f.label}</label>
               <input type="date"
-                className="w-full bg-transparent border-b border-gray-100 py-2 text-sm text-gray-600 outline-none focus:border-gray-300 transition-colors"
+                className="w-full bg-transparent border-b border-[#E8E0D0] py-2 text-sm text-[#4A4035] outline-none focus:border-gray-300 transition-colors"
                 value={f.value} onChange={e => f.onChange(e.target.value)} />
             </div>
           ))}
@@ -130,7 +130,7 @@ export default function GoalsTab({ goals, startDate, endDate, calendarData, onGo
       {/* 日历 */}
       {startDate
         ? <Calendar startDate={startDate} endDate={endDate} calendarData={calendarData} onDayClick={onDayClick} />
-        : <p className="text-sm text-gray-200 text-center py-8">设置开始日期后显示日历</p>
+        : <p className="text-sm text-[#C8BDB0] text-center py-8">设置开始日期后显示日历</p>
       }
     </div>
   )

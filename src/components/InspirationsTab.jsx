@@ -49,7 +49,7 @@ function InspirationBubble({ item, index, onClick, onLongPress }) {
       }}
       className="rounded-full flex flex-col items-center justify-center text-center active:scale-95 transition-transform duration-100 select-none"
     >
-      <span className={`text-[10px] leading-tight px-2 ${isHigh ? 'text-purple-400' : 'text-gray-300'}`}>
+      <span className={`text-[10px] leading-tight px-2 ${isHigh ? 'text-purple-400' : 'text-[#B5A898]'}`}>
         {item.text}
       </span>
       {isHigh && <span className="text-[9px] text-purple-300 mt-0.5">{item.score}</span>}
@@ -60,8 +60,8 @@ function InspirationBubble({ item, index, onClick, onLongPress }) {
 function QuadrantModal({ onSelect, onClose }) {
   return (
     <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/10" onClick={onClose}>
-      <div className="bg-white rounded-t-2xl w-full max-w-sm p-5 pb-10 border-t border-gray-100" onClick={e => e.stopPropagation()}>
-        <p className="text-xs text-gray-300 text-center mb-4 tracking-widest uppercase">添加到</p>
+      <div className="bg-[#FFFDF7] rounded-t-2xl w-full max-w-sm p-5 pb-10 border-t border-[#E8E0D0]" onClick={e => e.stopPropagation()}>
+        <p className="text-xs text-[#B5A898] text-center mb-4 tracking-widest uppercase">添加到</p>
         <div className="flex flex-col gap-2">
           {QUADRANTS.map(q => (
             <button key={q.key} onClick={() => onSelect(q.key)}
@@ -144,7 +144,7 @@ export default function InspirationsTab({ inspirations, onInspirationsChange, on
     <div className="flex flex-col h-full">
       <div className="flex-1 relative overflow-hidden">
         {inspirations.length === 0 && (
-          <div className="absolute inset-0 flex items-center justify-center text-gray-200 text-sm">
+          <div className="absolute inset-0 flex items-center justify-center text-[#C8BDB0] text-sm">
             输入或说出你的灵感
           </div>
         )}
@@ -157,10 +157,10 @@ export default function InspirationsTab({ inspirations, onInspirationsChange, on
 
       {/* 输入栏 */}
       <div className="shrink-0 px-4 pb-6 pt-3 flex gap-2 items-end">
-        <div className="flex-1 flex items-center gap-2 bg-white border border-gray-100 rounded-2xl px-4 py-2.5 min-h-[48px]">
+        <div className="flex-1 flex items-center gap-2 bg-[#FFFDF7] border border-[#E8E0D0] rounded-2xl px-4 py-2.5 min-h-[48px]">
           <textarea
             rows={1}
-            className="flex-1 bg-transparent text-sm text-gray-600 outline-none resize-none placeholder-gray-200 leading-relaxed"
+            className="flex-1 bg-transparent text-sm text-[#4A4035] outline-none resize-none placeholder-gray-200 leading-relaxed"
             placeholder="记录灵感..."
             value={inputText}
             onChange={e => setInputText(e.target.value)}
@@ -168,16 +168,16 @@ export default function InspirationsTab({ inspirations, onInspirationsChange, on
             style={{ maxHeight: 80 }}
           />
           <button onClick={toggleVoice}
-            className={`shrink-0 active:scale-95 transition-all duration-100 ${isRecording ? 'text-red-400' : 'text-gray-300 hover:text-gray-400'}`}>
+            className={`shrink-0 active:scale-95 transition-all duration-100 ${isRecording ? 'text-red-400' : 'text-[#B5A898] hover:text-[#8C7B6B]'}`}>
             {isRecording ? <MicOff size={16} strokeWidth={1.5} /> : <Mic size={16} strokeWidth={1.5} />}
           </button>
         </div>
         <button onClick={handleSend} disabled={!inputText.trim() || scoring}
-          className="shrink-0 w-12 h-12 rounded-full border border-gray-100 bg-white flex items-center justify-center text-gray-300 hover:border-gray-200 hover:text-gray-400 transition-colors active:scale-95 duration-100 disabled:opacity-30">
-          {scoring ? <span className="text-[10px] text-gray-300">…</span> : <Send size={15} strokeWidth={1.5} />}
+          className="shrink-0 w-12 h-12 rounded-full border border-[#E8E0D0] bg-[#FFFDF7] flex items-center justify-center text-[#B5A898] hover:border-gray-200 hover:text-[#8C7B6B] transition-colors active:scale-95 duration-100 disabled:opacity-30">
+          {scoring ? <span className="text-[10px] text-[#B5A898]">…</span> : <Send size={15} strokeWidth={1.5} />}
         </button>
         <button onClick={handleDice}
-          className="shrink-0 w-12 h-12 rounded-full border border-gray-100 bg-white flex items-center justify-center text-gray-300 hover:border-gray-200 transition-colors active:scale-95 duration-100">
+          className="shrink-0 w-12 h-12 rounded-full border border-[#E8E0D0] bg-[#FFFDF7] flex items-center justify-center text-[#B5A898] hover:border-gray-200 transition-colors active:scale-95 duration-100">
           <Dice3 size={18} strokeWidth={1.5} />
         </button>
       </div>

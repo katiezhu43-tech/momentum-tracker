@@ -44,7 +44,7 @@ function BubbleSlot({ bubble, color, onToggle, onDelete, onFocus, onAddEmpty }) 
   if (!bubble) {
     return (
       <button onClick={handleClick}
-        className="aspect-square rounded-full border border-dashed flex items-center justify-center text-gray-200 hover:border-gray-300 hover:text-gray-300 transition-colors active:scale-95 duration-100"
+        className="aspect-square rounded-full border border-dashed flex items-center justify-center text-[#C8BDB0] hover:border-gray-300 hover:text-[#B5A898] transition-colors active:scale-95 duration-100"
         style={{ borderColor: '#e5e7eb' }}>
         <Plus size={12} strokeWidth={1.5} />
       </button>
@@ -66,7 +66,7 @@ function BubbleSlot({ bubble, color, onToggle, onDelete, onFocus, onAddEmpty }) 
 function Quadrant({ q, bubbles, onToggle, onDelete, onFocus, onAdd }) {
   const slots = Array.from({ length: 9 }, (_, i) => bubbles[i] ?? null)
   return (
-    <div className="border border-gray-100 rounded-2xl p-3 md:p-4 flex flex-col gap-2 h-full bg-white">
+    <div className="border border-[#E8E0D0] rounded-2xl p-3 md:p-4 flex flex-col gap-2 h-full bg-[#FFFDF7]">
       <span className="text-[10px] tracking-wide" style={{ color: q.color }}>{q.label}</span>
       <div className="grid grid-cols-3 gap-2 md:gap-3 flex-1">
         {slots.map((bubble, i) => (
@@ -141,11 +141,11 @@ function InputPage({ bubbles, onBubblesChange, onClose }) {
   }
 
   return (
-    <div className="absolute inset-0 bg-[#fafafa] z-10 flex flex-col">
-      <div className="flex items-center justify-between px-5 py-4 bg-white border-b border-gray-100">
-        <button onClick={onClose} className="text-sm text-gray-400 active:scale-95 transition-transform duration-100">取消</button>
-        <span className="text-sm text-gray-600">编辑任务</span>
-        <button onClick={handleConfirm} className="text-sm text-gray-800 font-medium active:scale-95 transition-transform duration-100">确认</button>
+    <div className="absolute inset-0 bg-[#F5F0E8] z-10 flex flex-col">
+      <div className="flex items-center justify-between px-5 py-4 bg-[#FFFDF7] border-b border-[#E8E0D0]">
+        <button onClick={onClose} className="text-sm text-[#8C7B6B] active:scale-95 transition-transform duration-100">取消</button>
+        <span className="text-sm text-[#4A4035]">编辑任务</span>
+        <button onClick={handleConfirm} className="text-sm text-[#1A1A1A] font-medium active:scale-95 transition-transform duration-100">确认</button>
       </div>
 
       {/* 图例 */}
@@ -154,48 +154,48 @@ function InputPage({ bubbles, onBubblesChange, onClose }) {
           { label: '重要', color: '#C084FC' },
           { label: '紧急', color: '#93C5FD' },
         ].map(t => (
-          <span key={t.label} className="flex items-center gap-1 text-[10px] text-gray-300">
+          <span key={t.label} className="flex items-center gap-1 text-[10px] text-[#B5A898]">
             <span className="w-2 h-2 rounded-sm inline-block" style={{ background: t.color }} />
             {t.label}
           </span>
         ))}
-        <span className="text-[10px] text-gray-200 ml-auto">点击标签自动分配象限</span>
+        <span className="text-[10px] text-[#C8BDB0] ml-auto">点击标签自动分配象限</span>
       </div>
 
       {/* 任务列表 */}
       <div className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-2">
         {tasks.map(task => (
-          <div key={task.id} className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-3 py-2.5">
+          <div key={task.id} className="flex items-center gap-3 bg-[#FFFDF7] border border-[#E8E0D0] rounded-xl px-3 py-2.5">
             {/* 重要 / 紧急 标签 */}
             <button onClick={() => toggleTag(task.id, 'important')}
               className={`shrink-0 text-[10px] px-2 py-0.5 rounded-full border transition-all duration-150 active:scale-95
-                ${task.important ? 'border-purple-200 bg-purple-50 text-purple-400' : 'border-gray-100 text-gray-300'}`}>
+                ${task.important ? 'border-purple-200 bg-purple-50 text-purple-400' : 'border-[#E8E0D0] text-[#B5A898]'}`}>
               重要
             </button>
             <button onClick={() => toggleTag(task.id, 'urgent')}
               className={`shrink-0 text-[10px] px-2 py-0.5 rounded-full border transition-all duration-150 active:scale-95
-                ${task.urgent ? 'border-blue-200 bg-blue-50 text-blue-400' : 'border-gray-100 text-gray-300'}`}>
+                ${task.urgent ? 'border-blue-200 bg-blue-50 text-blue-400' : 'border-[#E8E0D0] text-[#B5A898]'}`}>
               紧急
             </button>
             {/* 象限指示点 */}
             <span className="shrink-0 w-2 h-2 rounded-full"
               style={{ background: QUADRANTS.find(q => q.key === getQuadrantKey(task.important, task.urgent))?.color }} />
             {/* 文字 */}
-            <input className="flex-1 text-sm text-gray-600 bg-transparent outline-none placeholder-gray-200"
+            <input className="flex-1 text-sm text-[#4A4035] bg-transparent outline-none placeholder-gray-200"
               value={task.text} onChange={e => updateText(task.id, e.target.value)} />
             {/* 删除 */}
-            <button onClick={() => removeTask(task.id)} className="shrink-0 text-gray-200 hover:text-gray-400 text-lg leading-none active:scale-95">×</button>
+            <button onClick={() => removeTask(task.id)} className="shrink-0 text-[#C8BDB0] hover:text-[#8C7B6B] text-lg leading-none active:scale-95">×</button>
           </div>
         ))}
 
         {/* 新增输入行 */}
-        <div className="flex items-center gap-2 bg-white border border-dashed border-gray-100 rounded-xl px-3 py-2.5">
-          <input className="flex-1 text-sm text-gray-600 bg-transparent outline-none placeholder-gray-200"
+        <div className="flex items-center gap-2 bg-[#FFFDF7] border border-dashed border-[#E8E0D0] rounded-xl px-3 py-2.5">
+          <input className="flex-1 text-sm text-[#4A4035] bg-transparent outline-none placeholder-gray-200"
             placeholder="添加任务，按 Enter 确认..."
             value={newText}
             onChange={e => setNewText(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && addTask()} />
-          <button onClick={addTask} className="shrink-0 text-gray-300 hover:text-gray-500 active:scale-95">
+          <button onClick={addTask} className="shrink-0 text-[#B5A898] hover:text-gray-500 active:scale-95">
             <Plus size={14} strokeWidth={1.5} />
           </button>
         </div>
@@ -230,9 +230,9 @@ export default function TasksTab({ bubbles, onBubblesChange, onFocus }) {
         <InputPage bubbles={bubbles} onBubblesChange={onBubblesChange} onClose={() => setShowInput(false)} />
       )}
       <div className="flex items-center justify-between px-5 md:px-6 py-4">
-        <span className="text-xs text-gray-300">{todayLabel()}</span>
+        <span className="text-xs text-[#B5A898]">{todayLabel()}</span>
         <button onClick={() => setShowInput(true)}
-          className="active:scale-95 transition-transform duration-100 flex items-center gap-1 text-xs text-gray-400 hover:text-gray-600 transition-colors">
+          className="active:scale-95 transition-transform duration-100 flex items-center gap-1 text-xs text-[#8C7B6B] hover:text-[#4A4035] transition-colors">
           <Plus size={13} strokeWidth={1.5} /> 编辑任务
         </button>
       </div>

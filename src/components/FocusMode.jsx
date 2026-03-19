@@ -36,8 +36,8 @@ export default function FocusMode({ item, onExit }) {
   }, [])
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white gap-6">
-      <p className="text-[11px] text-gray-200 tracking-widest uppercase">专注中</p>
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#FFFDF7] gap-6">
+      <p className="text-[11px] text-[#C8BDB0] tracking-widest uppercase">专注中</p>
 
       {/* 圆形气泡 */}
       <div className="w-36 h-36 rounded-full flex items-center justify-center text-center px-4 shadow-sm"
@@ -46,18 +46,18 @@ export default function FocusMode({ item, onExit }) {
       </div>
 
       {/* 计时器 */}
-      <div className="text-5xl font-light text-gray-800 tabular-nums tracking-tight">
+      <div className="text-5xl font-light text-[#1A1A1A] tabular-nums tracking-tight">
         {formatTime(elapsed)}
       </div>
 
       {/* 执行提示 */}
       <div className="max-w-xs text-center px-6">
-        <p className="text-[11px] text-gray-300 tracking-widest uppercase mb-2">立刻行动</p>
-        <p className="text-sm text-gray-400 leading-relaxed">{hint}</p>
+        <p className="text-[11px] text-[#B5A898] tracking-widest uppercase mb-2">立刻行动</p>
+        <p className="text-sm text-[#8C7B6B] leading-relaxed">{hint}</p>
       </div>
 
       <button onClick={onExit}
-        className="mt-4 active:scale-95 transition-transform duration-100 text-sm text-gray-300 border border-gray-100 rounded-full px-8 py-2.5 hover:border-gray-200 hover:text-gray-400 transition-colors">
+        className="mt-4 active:scale-95 transition-transform duration-100 text-sm text-[#B5A898] border border-[#E8E0D0] rounded-full px-8 py-2.5 hover:border-gray-200 hover:text-[#8C7B6B] transition-colors">
         退出专注
       </button>
     </div>

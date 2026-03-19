@@ -66,7 +66,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-[#fafafa] overflow-hidden">
+    <div className="flex flex-col h-screen bg-[#F5F0E8] overflow-hidden">
       {focusItem && <FocusMode item={focusItem} onExit={() => setFocusItem(null)} />}
 
       <main className="flex-1 overflow-hidden">
@@ -89,7 +89,7 @@ export default function App() {
         </div>
       </main>
 
-      <nav className="shrink-0 border-t border-gray-100 bg-white flex justify-around items-center px-6 py-3 md:justify-center md:gap-20">
+      <nav className="shrink-0 border-t border-[#E8E0D0] bg-[#FFFDF7] flex justify-around items-center px-6 py-3 md:justify-center md:gap-20">
         {TABS.map(({ id, label }) => (
           <button key={id} onClick={() => setActiveTab(id)}
             className="active:scale-95 transition-transform duration-100 flex flex-col items-center gap-1.5 px-2"
