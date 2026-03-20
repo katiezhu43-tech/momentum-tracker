@@ -6,8 +6,8 @@ import FocusMode from './components/FocusMode'
 
 const TABS = [
   { id: 'goals',        label: '长期任务' },
-  { id: 'today',        label: '今日清单' },
   { id: 'inspirations', label: '灵感涌现' },
+  { id: 'today',        label: '今日清单' },
 ]
 
 function todayKey() {
@@ -23,7 +23,7 @@ function loadJSON(key, fallback) {
 const EMPTY_BUBBLES = { purple: [], blue: [], green: [], yellow: [] }
 
 export default function App() {
-  const [activeTab, setActiveTab]       = useState('today')
+  const [activeTab, setActiveTab]       = useState('inspirations')
   const [goals, setGoals]               = useState(() => loadJSON('momentum_goals', ['','','']))
   const [startDate, setStartDate]       = useState(() => localStorage.getItem('momentum_start') ?? '')
   const [endDate, setEndDate]           = useState(() => localStorage.getItem('momentum_end') ?? '')
